@@ -53,7 +53,7 @@
             this.dgvQLTK.Name = "dgvQLTK";
             this.dgvQLTK.RowHeadersWidth = 51;
             this.dgvQLTK.RowTemplate.Height = 24;
-            this.dgvQLTK.Size = new System.Drawing.Size(660, 487);
+            this.dgvQLTK.Size = new System.Drawing.Size(678, 487);
             this.dgvQLTK.TabIndex = 10;
             this.dgvQLTK.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQLTK_CellClick);
             // 
@@ -62,7 +62,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(744, 105);
+            this.label1.Location = new System.Drawing.Point(757, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 29);
             this.label1.TabIndex = 2;
@@ -73,7 +73,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(744, 192);
+            this.label2.Location = new System.Drawing.Point(757, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 29);
             this.label2.TabIndex = 2;
@@ -84,7 +84,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(744, 287);
+            this.label3.Location = new System.Drawing.Point(760, 287);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 29);
             this.label3.TabIndex = 2;
@@ -96,27 +96,27 @@
             this.cmbLoaiTaiKhoan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLoaiTaiKhoan.Font = new System.Drawing.Font("SVN-Nexa Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLoaiTaiKhoan.FormattingEnabled = true;
-            this.cmbLoaiTaiKhoan.Location = new System.Drawing.Point(909, 286);
+            this.cmbLoaiTaiKhoan.Location = new System.Drawing.Point(905, 286);
             this.cmbLoaiTaiKhoan.Name = "cmbLoaiTaiKhoan";
-            this.cmbLoaiTaiKhoan.Size = new System.Drawing.Size(150, 34);
+            this.cmbLoaiTaiKhoan.Size = new System.Drawing.Size(154, 34);
             this.cmbLoaiTaiKhoan.TabIndex = 6;
             // 
             // txtMatKhau
             // 
             this.txtMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMatKhau.Font = new System.Drawing.Font("SVN-Nexa Light", 12F);
-            this.txtMatKhau.Location = new System.Drawing.Point(749, 224);
+            this.txtMatKhau.Location = new System.Drawing.Point(762, 224);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(310, 35);
+            this.txtMatKhau.Size = new System.Drawing.Size(297, 35);
             this.txtMatKhau.TabIndex = 5;
             // 
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTaiKhoan.Font = new System.Drawing.Font("SVN-Nexa Light", 12F);
-            this.txtTaiKhoan.Location = new System.Drawing.Point(749, 139);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(762, 139);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(310, 35);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(297, 35);
             this.txtTaiKhoan.TabIndex = 4;
             this.txtTaiKhoan.Click += new System.EventHandler(this.txtTaiKhoan_Click);
             this.txtTaiKhoan.TextChanged += new System.EventHandler(this.txtTaiKhoan_TextChanged);
@@ -128,13 +128,13 @@
             this.btnHuyBo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnHuyBo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnHuyBo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuyBo.Font = new System.Drawing.Font("SVN-Nexa Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyBo.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuyBo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(53)))));
             this.btnHuyBo.Image = global::QuanLyTienLuong.Properties.Resources.icons8_refresh_30;
             this.btnHuyBo.Location = new System.Drawing.Point(571, 36);
             this.btnHuyBo.Name = "btnHuyBo";
             this.btnHuyBo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnHuyBo.Size = new System.Drawing.Size(146, 45);
+            this.btnHuyBo.Size = new System.Drawing.Size(163, 52);
             this.btnHuyBo.TabIndex = 3;
             this.btnHuyBo.Text = "Làm mới";
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -148,14 +148,14 @@
             this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Font = new System.Drawing.Font("SVN-Nexa Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(53)))));
             this.btnXoa.Image = global::QuanLyTienLuong.Properties.Resources.icons8_delete_30;
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(402, 36);
+            this.btnXoa.Location = new System.Drawing.Point(400, 36);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnXoa.Size = new System.Drawing.Size(146, 45);
+            this.btnXoa.Size = new System.Drawing.Size(163, 52);
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xoá ";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -169,13 +169,13 @@
             this.btnCapNhat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnCapNhat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnCapNhat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapNhat.Font = new System.Drawing.Font("SVN-Nexa Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(53)))));
             this.btnCapNhat.Image = global::QuanLyTienLuong.Properties.Resources.icons8_edit_property_30;
-            this.btnCapNhat.Location = new System.Drawing.Point(230, 36);
+            this.btnCapNhat.Location = new System.Drawing.Point(229, 36);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnCapNhat.Size = new System.Drawing.Size(146, 45);
+            this.btnCapNhat.Size = new System.Drawing.Size(163, 52);
             this.btnCapNhat.TabIndex = 1;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -189,13 +189,13 @@
             this.btnThemMoi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnThemMoi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnThemMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemMoi.Font = new System.Drawing.Font("SVN-Nexa Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemMoi.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemMoi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(53)))));
             this.btnThemMoi.Image = global::QuanLyTienLuong.Properties.Resources.icons8_add_30;
             this.btnThemMoi.Location = new System.Drawing.Point(56, 36);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnThemMoi.Size = new System.Drawing.Size(146, 45);
+            this.btnThemMoi.Size = new System.Drawing.Size(163, 52);
             this.btnThemMoi.TabIndex = 0;
             this.btnThemMoi.Text = "Thêm mới ";
             this.btnThemMoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

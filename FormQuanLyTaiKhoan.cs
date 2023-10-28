@@ -20,23 +20,6 @@ namespace QuanLyTienLuong
         public FormQuanLyTaiKhoan()
         {
             InitializeComponent();
-            using (SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1"))
-            {
-                con.Open();
-                string query = "select roletype from role";
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string item = reader["roletype"].ToString();
-                            cmbLoaiTaiKhoan.Items.Add(item);
-                        }
-                    }
-                }
-            }
-            con.Close();
         }
         void Load_Data()
         {
@@ -51,12 +34,28 @@ namespace QuanLyTienLuong
             dgvQLTK.Columns["pass"].HeaderText = "Mật khẩu";
             dgvQLTK.Columns["pass"].Width = 180;
             dgvQLTK.Columns["roletype"].HeaderText = "Loại tài khoản";
-            dgvQLTK.Columns["roletype"].Width = 245;    
+            dgvQLTK.Columns["roletype"].Width = 245;
+        }
+        void Load_Combobox()
+        {
+            string query = "select roletype from role";
+            using (SqlCommand command = new SqlCommand(query, con))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string item = reader["roletype"].ToString();
+                        cmbLoaiTaiKhoan.Items.Add(item);
+                    }
+                }
+            }
         }
         private void FormQuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
             con.Open();
             Load_Data();
+            Load_Combobox();
             con.Close();
         }
 

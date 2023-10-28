@@ -11,7 +11,6 @@ C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.exe
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.pdb
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.FormBaoCaoTienLuong.resources
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.FormInBangLuong.resources
-C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.csproj.CopyComplete
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\AlphaBlendTextBox.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.FormMessageBox.resources
