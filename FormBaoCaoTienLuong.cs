@@ -16,5 +16,20 @@ namespace QuanLyTienLuong
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormBaoCaoTienLuong_Load(object sender, EventArgs e)
+        {
+            HienThiKetQuaBaoCao();
+        }
+
+        private void HienThiKetQuaBaoCao()
+        {
+            
+        }
     }
 }

@@ -146,7 +146,7 @@ namespace QuanLyTienLuong
 
             if (ValidationHelper.ValidateUsername(username) && ValidationHelper.ValidatePassword(password))
             {
-                int roleid = role.Equals("Quản trị viên") ? 1 : 0;
+                int roleid = role.Equals("Quản trị viên") ? 1 : 2;
 
                 bool isUsernameChanged = !username.Equals(existingUsername); // existingUsername là biến lưu trữ tên người dùng hiện tại
 

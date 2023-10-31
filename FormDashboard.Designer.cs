@@ -32,7 +32,6 @@
             this.btnMenuThemTaiKhoan = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnMenuBaoCaoLuong = new System.Windows.Forms.Button();
-            this.btnMenuInbangLuong = new System.Windows.Forms.Button();
             this.btnMenuTimKiem = new System.Windows.Forms.Button();
             this.btnMenuTinhLuong = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -60,7 +59,6 @@
             this.pnlSlideMenu.Controls.Add(this.btnMenuThemTaiKhoan);
             this.pnlSlideMenu.Controls.Add(this.btnDangXuat);
             this.pnlSlideMenu.Controls.Add(this.btnMenuBaoCaoLuong);
-            this.pnlSlideMenu.Controls.Add(this.btnMenuInbangLuong);
             this.pnlSlideMenu.Controls.Add(this.btnMenuTimKiem);
             this.pnlSlideMenu.Controls.Add(this.btnMenuTinhLuong);
             this.pnlSlideMenu.Controls.Add(this.pnlLogo);
@@ -120,7 +118,7 @@
             this.btnMenuBaoCaoLuong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
             this.btnMenuBaoCaoLuong.Image = global::QuanLyTienLuong.Properties.Resources.icons8_report_48;
             this.btnMenuBaoCaoLuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuBaoCaoLuong.Location = new System.Drawing.Point(0, 279);
+            this.btnMenuBaoCaoLuong.Location = new System.Drawing.Point(0, 213);
             this.btnMenuBaoCaoLuong.Name = "btnMenuBaoCaoLuong";
             this.btnMenuBaoCaoLuong.Size = new System.Drawing.Size(247, 66);
             this.btnMenuBaoCaoLuong.TabIndex = 4;
@@ -128,26 +126,6 @@
             this.btnMenuBaoCaoLuong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenuBaoCaoLuong.UseVisualStyleBackColor = false;
             this.btnMenuBaoCaoLuong.Click += new System.EventHandler(this.btnMenuBaoCaoLuong_Click);
-            // 
-            // btnMenuInbangLuong
-            // 
-            this.btnMenuInbangLuong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.btnMenuInbangLuong.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMenuInbangLuong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(225)))));
-            this.btnMenuInbangLuong.FlatAppearance.BorderSize = 0;
-            this.btnMenuInbangLuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuInbangLuong.Font = new System.Drawing.Font("SVN-Neutraface 2", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuInbangLuong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.btnMenuInbangLuong.Image = global::QuanLyTienLuong.Properties.Resources.icons8_printer_48;
-            this.btnMenuInbangLuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuInbangLuong.Location = new System.Drawing.Point(0, 213);
-            this.btnMenuInbangLuong.Name = "btnMenuInbangLuong";
-            this.btnMenuInbangLuong.Size = new System.Drawing.Size(247, 66);
-            this.btnMenuInbangLuong.TabIndex = 3;
-            this.btnMenuInbangLuong.Text = "In bảng lương";
-            this.btnMenuInbangLuong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMenuInbangLuong.UseVisualStyleBackColor = false;
-            this.btnMenuInbangLuong.Click += new System.EventHandler(this.btnMenuInBangLuong_Click);
             // 
             // btnMenuTimKiem
             // 
@@ -348,7 +326,6 @@
         private System.Windows.Forms.Button btnMenuTimKiem;
         private System.Windows.Forms.PictureBox btnHome;
         private System.Windows.Forms.Button btnMenuBaoCaoLuong;
-        private System.Windows.Forms.Button btnMenuInbangLuong;
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnCloseDashboard;
         private System.Windows.Forms.Button btnMaximizeDashboard;

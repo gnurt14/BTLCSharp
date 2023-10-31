@@ -62,12 +62,6 @@ namespace QuanLyTienLuong
             ActivateButton(sender);
         }
 
-        private void btnMenuInBangLuong_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FormInBangLuong());
-            ActivateButton(sender);
-        }
-
         private void btnMenuBaoCaoLuong_Click(object sender, EventArgs e)
         {
             openChildForm(new FormBaoCaoTienLuong());
