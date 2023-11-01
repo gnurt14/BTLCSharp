@@ -68,3 +68,15 @@ C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\pt\Microsoft.ReportViewer.
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\log4net.dll
+C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\log4net.xml
+C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.FormInBangLuong.resources

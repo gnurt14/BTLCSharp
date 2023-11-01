@@ -153,6 +153,16 @@ namespace QuanLyTienLuong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_create_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-create-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-30", resourceCulture);
@@ -236,6 +246,16 @@ namespace QuanLyTienLuong.Properties {
         internal static System.Drawing.Bitmap icons8_password_40 {
             get {
                 object obj = ResourceManager.GetObject("icons8-password-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_printer_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-printer-25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

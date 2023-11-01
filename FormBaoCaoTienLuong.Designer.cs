@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.btnTao = new System.Windows.Forms.Button();
-            this.rptBaoCao = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
             // label1
@@ -49,11 +49,23 @@
             this.cmbThang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbThang.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbThang.FormattingEnabled = true;
+            this.cmbThang.Items.AddRange(new object[] {
+            "Tháng 1",
+            "Tháng 2",
+            "Tháng 3",
+            "Tháng 4",
+            "Tháng 5",
+            "Tháng 6",
+            "Tháng 7",
+            "Tháng 8",
+            "Tháng 9",
+            "Tháng 10",
+            "Tháng 11",
+            "Tháng 12"});
             this.cmbThang.Location = new System.Drawing.Point(239, 24);
             this.cmbThang.Name = "cmbThang";
             this.cmbThang.Size = new System.Drawing.Size(256, 37);
             this.cmbThang.TabIndex = 1;
-            this.cmbThang.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnTao
             // 
@@ -64,9 +76,9 @@
             this.btnTao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.btnTao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTao.Font = new System.Drawing.Font("SVN-Nexa Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTao.Image = global::QuanLyTienLuong.Properties.Resources.icons8_search_25__2_;
+            this.btnTao.Image = global::QuanLyTienLuong.Properties.Resources.icons8_create_25;
             this.btnTao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTao.Location = new System.Drawing.Point(881, 24);
+            this.btnTao.Location = new System.Drawing.Point(897, 18);
             this.btnTao.Name = "btnTao";
             this.btnTao.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTao.Size = new System.Drawing.Size(162, 48);
@@ -74,17 +86,20 @@
             this.btnTao.Text = "Tạo báo cáo";
             this.btnTao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTao.UseVisualStyleBackColor = false;
+            this.btnTao.Click += new System.EventHandler(this.btnTao_Click);
             // 
-            // rptBaoCao
+            // crystalReportViewer1
             // 
-            this.rptBaoCao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rptBaoCao.Location = new System.Drawing.Point(30, 112);
-            this.rptBaoCao.Name = "rptBaoCao";
-            this.rptBaoCao.ServerReport.BearerToken = null;
-            this.rptBaoCao.Size = new System.Drawing.Size(1013, 506);
-            this.rptBaoCao.TabIndex = 6;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 88);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1047, 530);
+            this.crystalReportViewer1.TabIndex = 6;
             // 
             // FormBaoCaoTienLuong
             // 
@@ -92,7 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1071, 630);
-            this.Controls.Add(this.rptBaoCao);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.btnTao);
             this.Controls.Add(this.cmbThang);
             this.Controls.Add(this.label1);
@@ -109,6 +124,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbThang;
         private System.Windows.Forms.Button btnTao;
-        private Microsoft.Reporting.WinForms.ReportViewer rptBaoCao;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

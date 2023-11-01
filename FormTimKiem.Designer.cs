@@ -104,9 +104,9 @@
             // 
             this.txtHoTen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHoTen.Font = new System.Drawing.Font("SVN-Nexa Light", 12F);
-            this.txtHoTen.Location = new System.Drawing.Point(782, 20);
+            this.txtHoTen.Location = new System.Drawing.Point(809, 20);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(277, 35);
+            this.txtHoTen.Size = new System.Drawing.Size(250, 35);
             this.txtHoTen.TabIndex = 2;
             this.txtHoTen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtHoTen_MouseClick);
             // 

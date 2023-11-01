@@ -62,51 +62,10 @@ namespace QuanLyTienLuong
                 }
             }
         }
-        void Load_data()
-        {
-            command = con.CreateCommand();
-            command.CommandText = "select hosonhanvien.manhanvien,hoten,ngaysinh,gioitinh,tennoisinh,ngayvaocongty,tendantoc," +
-                "tenphongban,tenchuyenmon, tenchucvu, tentrinhdo from hosonhanvien" +
-                "\r\njoin dantoc on hosonhanvien.madantoc = dantoc.madantoc" +
-                "\r\njoin noisinh on hosonhanvien.manoisinh = noisinh.manoisinh" +
-                "\r\njoin phongban on hosonhanvien.maphongban = phongban.maphongban" +
-                "\r\njoin chuyenmon on hosonhanvien.machuyenmon = chuyenmon.machuyenmon" +
-                "\r\njoin NhanVienChucVu on hosonhanvien.manhanvien = NhanVienChucVu.manhanvien" +
-                "\r\njoin chucvu on NhanVienChucVu.machucvu = chucvu.machucvu" +
-                "\r\njoin nhanvientrinhdo on hosonhanvien.manhanvien = nhanvientrinhdo.manhanvien" +
-                "\r\njoin trinhdo on trinhdo.Matrinhdo = nhanvientrinhdo.matrinhdo\r\n";
-            adapterData.SelectCommand = command;
-            dt.Clear();
-            adapterData.Fill(dt);
-            dgvTimKiem.DataSource = dt;
-            dgvTimKiem.Columns["manhanvien"].HeaderText = "Mã nhân viên";
-            dgvTimKiem.Columns["manhanvien"].Width = 120;
-            dgvTimKiem.Columns["hoten"].HeaderText = "Họ tên";
-            dgvTimKiem.Columns["hoten"].Width = 180;
-            dgvTimKiem.Columns["ngaysinh"].HeaderText = "Ngày sinh";
-            dgvTimKiem.Columns["ngaysinh"].Width = 120;
-            dgvTimKiem.Columns["gioitinh"].HeaderText = "Giới tính";
-            dgvTimKiem.Columns["gioitinh"].Width = 100;
-            dgvTimKiem.Columns["tennoisinh"].HeaderText = "Nơi sinh";
-            dgvTimKiem.Columns["tennoisinh"].Width = 100;
-            dgvTimKiem.Columns["tendantoc"].HeaderText = "Dân tộc";
-            dgvTimKiem.Columns["tendantoc"].Width= 100;
-            dgvTimKiem.Columns["ngayvaocongty"].HeaderText = "Ngày vào công ty";
-            dgvTimKiem.Columns["ngayvaocongty"].Width = 150;
-            dgvTimKiem.Columns["tenphongban"].HeaderText = "Phòng ban";
-            dgvTimKiem.Columns["tenphongban"].Width = 200;
-            dgvTimKiem.Columns["tenchuyenmon"].HeaderText = "Chuyên môn";
-            dgvTimKiem.Columns["tenchuyenmon"].Width = 180;
-            dgvTimKiem.Columns["tenchucvu"].HeaderText = "Chức vụ";
-            dgvTimKiem.Columns["tenchucvu"].Width = 120;
-            dgvTimKiem.Columns["tentrinhdo"].HeaderText = "Trình độ";
-            dgvTimKiem.Columns["tentrinhdo"].Width = 100;
-        }
         private void FormTimKiem_Load(object sender, EventArgs e)
         {
             con.Open();
             Load_Combobox();
-            //Load_data();
             con.Close(); 
         }
 
@@ -116,59 +75,19 @@ namespace QuanLyTienLuong
             {
                 CustomMessageBox.Show("Vui lòng chọn một trường tìm kiếm", "Thông báo");
             }
-            // Tìm
+            // Tìm kiếm
             else
             {
-                //{
-                //    string selectQuery = "SELECT COUNT(*) FROM hosonhanvien hs\r\njoin nhanvientrinhdo nvtd on hs.manhanvien = nvtd.manhanvien\r\njoin trinhdo on trinhdo.Matrinhdo = nvtd.matrinhdo\r\njoin chuyenmon on hs.machuyenmon = chuyenmon.Machuyenmon\r\njoin nhanvienhesoluong nvhsl on hs.manhanvien = nvhsl.manhanvien\r\njoin hesoluong on hesoluong.mahesoluong = nvhsl.mahesoluong\r\nWHERE hoten like N'%@hoten%' and tentrinhdo like N'%@trinhdo%' and tenhesoluong like N'%@hsl%' and tenchuyenmon like N'%@chuyenmon%'\r\n";
-                //    using (SqlCommand selectCommand = new SqlCommand(selectQuery, con))
-                //    {
-                //        selectCommand.Parameters.AddWithValue("@hoten", txtHoTen.Text);
-                //        selectCommand.Parameters.AddWithValue("@trinhdo", cmbTrinhDo.ToString());
-                //        selectCommand.Parameters.AddWithValue("@chuyemon", cmbChuyenMon.ToString());
-                //        con.Open();
-                //        int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-                //        con.Close();
-                //        CustomMessageBox.Show("Tìm thấy " + count + " nhân viên trùng khớp", "Thông báo", MessageBoxButtons.OK);
-                //        if (count == 0)
-                //        {
-                //            dgvTimKiem.DataSource = null;
-                //            return;
-                //        }
-                //        else if (count > 0)
-                //        {
-                //            selectQuery = "select hosonhanvien.manhanvien,hoten,ngaysinh,gioitinh,tennoisinh,ngayvaocongty,tendantoc," +
-                //            "tenphongban,tenchuyenmon, tenchucvu from hosonhanvien" +
-                //            "\r\njoin dantoc on hosonhanvien.madantoc = dantoc.madantoc" +
-                //            "\r\njoin noisinh on hosonhanvien.manoisinh = noisinh.manoisinh" +
-                //            "\r\njoin phongban on hosonhanvien.maphongban = phongban.maphongban" +
-                //            "\r\njoin chuyenmon on hosonhanvien.machuyenmon = chuyenmon.machuyenmon" +
-                //            "\r\njoin NhanVienChucVu on hosonhanvien.manhanvien = NhanVienChucVu.manhanvien" +
-                //            "\r\njoin chucvu on NhanVienChucVu.machucvu = chucvu.machucvu" +
-                //            "\r\nwhere hoten like @hoten";
-                //            using (SqlCommand selectCommand2 = con.CreateCommand())
-                //            {
-                //                selectCommand2.CommandText = selectQuery;
-                //                selectCommand2.Parameters.AddWithValue("@hoten", txtHoTen.Text);
-                //                con.Open();
-                //                selectCommand2.ExecuteNonQuery();
-                //                adapterData.SelectCommand = selectCommand2;
-                //                dt.Clear();
-                //                adapterData.Fill(dt);
-                //                dgvTimKiem.DataSource = dt;
-                //                Load_data();
-                //                con.Close();
-                //            }
-                //        }
-                //    }
-                //}
-                string selectQuery = "SELECT COUNT(*) FROM hosonhanvien hs\r\njoin nhanvientrinhdo nvtd on hs.manhanvien = nvtd.manhanvien\r\njoin trinhdo on trinhdo.Matrinhdo = nvtd.matrinhdo\r\njoin chuyenmon on hs.machuyenmon = chuyenmon.Machuyenmon\r\njoin nhanvienhesoluong nvhsl on hs.manhanvien = nvhsl.manhanvien\r\njoin hesoluong on hesoluong.mahesoluong = nvhsl.mahesoluong\r\nWHERE hoten like N'%' + @hoten + '%' and tentrinhdo like N'%' + @trinhdo + '%' and tenhesoluong like N'%' + @hsl + '%' and tenchuyenmon like N'%' + @chuyenmon + '%'\r\n";
+                
+                string selectQuery = "SELECT COUNT(*) FROM hosonhanvien hs\r\njoin nhanvientrinhdo nvtd on hs.manhanvien = nvtd.manhanvien\r\njoin trinhdo on trinhdo.Matrinhdo = nvtd.matrinhdo\r\njoin chuyenmon on hs.machuyenmon = chuyenmon.Machuyenmon\r\njoin nhanvienhesoluong nvhsl on hs.manhanvien = nvhsl.manhanvien\r\njoin hesoluong on hesoluong.mahesoluong = nvhsl.mahesoluong\r\nWHERE hoten like N'%' + @hoten + '%' and tentrinhdo like N'%' + @trinhdo + '%' and hesoluong.mahesoluong like N'%' + @hsl + '%' and tenchuyenmon like N'%' + @chuyenmon + '%'\r\n";
 
                 using (SqlCommand selectCommand = new SqlCommand(selectQuery, con))
                 {
+                    string[] parts = cmbHeSoLuong.Text.Split(' ');
+                    string hsl = parts[parts.Length - 1];
                     selectCommand.Parameters.AddWithValue("@hoten", txtHoTen.Text);
                     selectCommand.Parameters.AddWithValue("@trinhdo", cmbTrinhDo.Text);
-                    selectCommand.Parameters.AddWithValue("@hsl", cmbHeSoLuong.Text);
+                    selectCommand.Parameters.AddWithValue("@hsl", hsl);
                     selectCommand.Parameters.AddWithValue("@chuyenmon", cmbChuyenMon.Text);
                     con.Open();
                     int count = Convert.ToInt32(selectCommand.ExecuteScalar());
@@ -183,15 +102,7 @@ namespace QuanLyTienLuong
                     }
                     else if (count > 0)
                     {
-                        selectQuery = "select hosonhanvien.manhanvien,hoten,ngaysinh,gioitinh,tennoisinh,ngayvaocongty,tendantoc," +
-                            "tenphongban,tenchuyenmon, tenchucvu from hosonhanvien" +
-                            "\r\njoin dantoc on hosonhanvien.madantoc = dantoc.madantoc" +
-                            "\r\njoin noisinh on hosonhanvien.manoisinh = noisinh.manoisinh" +
-                            "\r\njoin phongban on hosonhanvien.maphongban = phongban.maphongban" +
-                            "\r\njoin chuyenmon on hosonhanvien.machuyenmon = chuyenmon.machuyenmon" +
-                            "\r\njoin NhanVienChucVu on hosonhanvien.manhanvien = NhanVienChucVu.manhanvien" +
-                            "\r\njoin chucvu on NhanVienChucVu.machucvu = chucvu.machucvu" +
-                            "\r\nwhere hoten like '%' + @hoten + '%'";
+                        selectQuery = "select hosonhanvien.manhanvien,hoten,ngaysinh,gioitinh,tennoisinh,ngayvaocongty,tendantoc,tenphongban,tenchuyenmon, tenchucvu, tentrinhdo from hosonhanvien join dantoc on hosonhanvien.madantoc = dantoc.madantoc join noisinh on hosonhanvien.manoisinh = noisinh.manoisinh join phongban on hosonhanvien.maphongban = phongban.maphongban join chuyenmon on hosonhanvien.machuyenmon = chuyenmon.machuyenmon join NhanVienChucVu on hosonhanvien.manhanvien = NhanVienChucVu.manhanvien join chucvu on NhanVienChucVu.machucvu = chucvu.machucvu join nhanvientrinhdo on nhanvientrinhdo.manhanvien = hosonhanvien.manhanvien  join trinhdo on trinhdo.matrinhdo = nhanvientrinhdo.matrinhdo where hoten like '%' + @hoten + '%'";
 
                         using (SqlCommand selectCommand2 = new SqlCommand(selectQuery, con))
                         {
@@ -201,6 +112,28 @@ namespace QuanLyTienLuong
                             DataTable dt = new DataTable();
                             dt.Load(reader);
                             dgvTimKiem.DataSource = dt;
+                            dgvTimKiem.Columns["manhanvien"].HeaderText = "Mã nhân viên";
+                            dgvTimKiem.Columns["manhanvien"].Width = 120;
+                            dgvTimKiem.Columns["hoten"].HeaderText = "Họ tên";
+                            dgvTimKiem.Columns["hoten"].Width = 180;
+                            dgvTimKiem.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+                            dgvTimKiem.Columns["ngaysinh"].Width = 120;
+                            dgvTimKiem.Columns["gioitinh"].HeaderText = "Giới tính";
+                            dgvTimKiem.Columns["gioitinh"].Width = 100;
+                            dgvTimKiem.Columns["tennoisinh"].HeaderText = "Nơi sinh";
+                            dgvTimKiem.Columns["tennoisinh"].Width = 100;
+                            dgvTimKiem.Columns["tendantoc"].HeaderText = "Dân tộc";
+                            dgvTimKiem.Columns["tendantoc"].Width = 100;
+                            dgvTimKiem.Columns["ngayvaocongty"].HeaderText = "Ngày vào công ty";
+                            dgvTimKiem.Columns["ngayvaocongty"].Width = 150;
+                            dgvTimKiem.Columns["tenphongban"].HeaderText = "Phòng ban";
+                            dgvTimKiem.Columns["tenphongban"].Width = 200;
+                            dgvTimKiem.Columns["tenchuyenmon"].HeaderText = "Chuyên môn";
+                            dgvTimKiem.Columns["tenchuyenmon"].Width = 180;
+                            dgvTimKiem.Columns["tenchucvu"].HeaderText = "Chức vụ";
+                            dgvTimKiem.Columns["tenchucvu"].Width = 120;
+                            dgvTimKiem.Columns["tentrinhdo"].HeaderText = "Trình độ";
+                            dgvTimKiem.Columns["tentrinhdo"].Width = 100;
                             con.Close();
                         }
                     }
