@@ -95,6 +95,7 @@ namespace QuanLyTienLuong
                         command.Parameters.AddWithValue("@pass", password);
                         command.Parameters.AddWithValue("@roleid", roleid);
                         command.ExecuteNonQuery();
+                        CustomMessageBox.Show("Thêm tài khoản thành công!");
                     }
                     con.Close();
                     Load_Data();

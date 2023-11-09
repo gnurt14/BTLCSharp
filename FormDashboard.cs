@@ -31,8 +31,6 @@ namespace QuanLyTienLuong
             this.isAdmin = isAdmin;
             tempImage = iconChildForm.Image;
         }
-
-
         private void openChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -62,11 +60,6 @@ namespace QuanLyTienLuong
             ActivateButton(sender);
         }
 
-        private void btnMenuBaoCaoLuong_Click(object sender, EventArgs e)
-        {
-            openChildForm(new FormBaoCaoTienLuong());
-            ActivateButton(sender);
-        }
 
         private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
