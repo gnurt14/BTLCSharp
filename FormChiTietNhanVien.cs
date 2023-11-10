@@ -234,7 +234,168 @@ namespace QuanLyTienLuong
                             CustomMessageBox.Show("Vui lòng nhập lại ngày sinh hợp lệ");
                         }
                     }
-                    
+                    if (nhanVien.GioiTinh != cmbGioiTinh.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set gioitinh = N'"+cmbGioiTinh.Text+"' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.NoiSinh != cmbNoiSinh.Text)
+                    {
+                        con.Open() ;
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set manoisinh = '"+(cmbNoiSinh.SelectedIndex + 1) +"' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if (nhanVien.DanToc != cmbDanToc.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set madantoc = '" + (cmbDanToc.SelectedIndex + 1) + "' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.SDT != txtDienThoai.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set dienthoai = '"+txtDienThoai.Text+ "' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.DiaChi != txtDiaChi.Text)
+                    {
+                        con.Open() ;
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set diachi = '"+txtDiaChi.Text+"' where manhanvien = N'"+txtDiaChi.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if (nhanVien.NgayVaoCongTy != mtbNgayVaoCongTy.Text)
+                    {
+                        if (DateTime.TryParseExact(mtbNgayVaoCongTy.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            string ngayvaocongty = parsedDate.ToString("yyyy-MM-dd");
+                            con.Open();
+                            cmd = con.CreateCommand();
+                            cmd.CommandText = "update hosonhanvien set ngayvaocongty = @ngayvaocongty where manhanvien = N'" + txtMaNV.Text + "'";
+                            cmd.Parameters.AddWithValue("ngayvaocongty", ngayvaocongty);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cnt++;
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show("Vui lòng nhập lại ngày/tháng hợp lệ");
+                        }
+                    }
+                    if(nhanVien.PhongBan != cmbPhongBan.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set maphongban = '"+(cmbPhongBan.SelectedIndex + 1)+"' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.ChuyenMon != cmbChuyenMon.Text)
+                    {
+                        con.Open() ;
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set machuyenmon = '"+(cmbChuyenMon.SelectedIndex + 1)+"' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.TrinhDo != cmbTrinhDo.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update nhanvientrinhdo set matrinhdo = '"+(cmbTrinhDo.SelectedIndex + 1)+"' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.HeSoLuong != cmbHeSoLuong.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update nhanvienhesoluong set mahesoluong = '" + (cmbHeSoLuong.SelectedIndex + 1) + "' where manhanvien = N'"+txtMaNV.Text+"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if(nhanVien.ChucVu != cmbChucVu.Text)
+                    {
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update nhanvienchucvu set machucvu = '" + (cmbChucVu.SelectedIndex + 1) + "' where manhanvien = N'" + txtMaNV.Text + "'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
+                    }
+                    if (nhanVien.NgayApDungHSL != mtbNgayApDungHSL.Text)
+                    {
+                        if (DateTime.TryParseExact(mtbNgayApDungHSL.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            string ngayapdunghsl = parsedDate.ToString("yyyy-MM-dd");
+                            con.Open();
+                            cmd = con.CreateCommand();
+                            cmd.CommandText = "update nhanvienhesoluong set ngayapdung = @ngayapdunghsl where manhanvien = N'" + txtMaNV.Text + "'";
+                            cmd.Parameters.AddWithValue("ngayapdunghsl", ngayapdunghsl);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cnt++;
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show("Vui lòng nhập lại ngày/tháng hợp lệ");
+                        }
+                    }
+                    if (nhanVien.NgayApDungTD != mtbNgayApDungTD.Text)
+                    {
+                        if (DateTime.TryParseExact(mtbNgayApDungTD.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            string ngayapdungtd = parsedDate.ToString("yyyy-MM-dd");
+                            con.Open();
+                            cmd = con.CreateCommand();
+                            cmd.CommandText = "update nhanvientrinhdo set ngayapdung = @ngayapdungtd where manhanvien = N'" + txtMaNV.Text + "'";
+                            cmd.Parameters.AddWithValue("ngayapdungtd", ngayapdungtd);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cnt++;
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show("Vui lòng nhập lại ngày/tháng hợp lệ");
+                        }
+                    }
+                    if (nhanVien.NgayNhamChuc != mtbNgayNhamChuc.Text)
+                    {
+                        if (DateTime.TryParseExact(mtbNgayNhamChuc.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            string ngaynhamchuc = parsedDate.ToString("yyyy-MM-dd");
+                            con.Open();
+                            cmd = con.CreateCommand();
+                            cmd.CommandText = "update nhanvienchucvu set ngayapdung = @ngaynhamchuc where manhanvien = N'" + txtMaNV.Text + "'";
+                            cmd.Parameters.AddWithValue("ngaynhamchuc", ngaynhamchuc);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cnt++;
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show("Vui lòng nhập lại ngày/tháng hợp lệ");
+                        }
+                    }
                 }
                 CustomMessageBox.Show("Cập nhật thông tin thành công!\n Đã có " + cnt + " thay đổi");
             }
