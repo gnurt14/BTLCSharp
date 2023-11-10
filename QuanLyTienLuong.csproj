@@ -157,6 +157,7 @@
     <Compile Include="FormTinhLuong.Designer.cs">
       <DependentUpon>FormTinhLuong.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoSoNhanVien.cs" />
     <Compile Include="InBangLuong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

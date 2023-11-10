@@ -56,7 +56,6 @@
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnCloseDashboard = new System.Windows.Forms.Button();
             this.txtMaNV = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -68,6 +67,9 @@
             this.mtbNgayNhamChuc = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.mtbNgayApDungTD = new System.Windows.Forms.MaskedTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtHoTen
@@ -365,27 +367,18 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("SVN-Nexa Light", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(392, 9);
+            this.label13.Font = new System.Drawing.Font("SVN-Nexa Bold", 20F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(373, 5);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(289, 49);
+            this.label13.Size = new System.Drawing.Size(349, 50);
             this.label13.TabIndex = 17;
-            this.label13.Text = "Chi tiết nhân viên";
-            // 
-            // btnCloseDashboard
-            // 
-            this.btnCloseDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseDashboard.FlatAppearance.BorderSize = 0;
-            this.btnCloseDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseDashboard.Image = global::QuanLyTienLuong.Properties.Resources.icons8_close_window_30;
-            this.btnCloseDashboard.Location = new System.Drawing.Point(1028, 4);
-            this.btnCloseDashboard.Name = "btnCloseDashboard";
-            this.btnCloseDashboard.Size = new System.Drawing.Size(30, 30);
-            this.btnCloseDashboard.TabIndex = 17;
-            this.btnCloseDashboard.UseVisualStyleBackColor = false;
-            this.btnCloseDashboard.Click += new System.EventHandler(this.btnCloseDashboard_Click);
+            this.label13.Text = "CHI TIẾT NHÂN VIÊN";
+            this.label13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label13_MouseDown);
             // 
             // txtMaNV
             // 
@@ -493,13 +486,33 @@
             this.mtbNgayApDungTD.TabIndex = 12;
             this.mtbNgayApDungTD.ValidatingType = typeof(System.DateTime);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(77)))));
+            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1071, 62);
+            this.panel1.TabIndex = 20;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(13, 13);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(60, 34);
+            this.btnBack.TabIndex = 18;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // FormChiTietNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 620);
-            this.Controls.Add(this.btnCloseDashboard);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.btnThemMoi);
@@ -543,6 +556,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormChiTietNhanVien";
             this.Load += new System.EventHandler(this.FormChiTietNhanVien_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,7 +593,6 @@
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnCloseDashboard;
         private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
@@ -590,5 +604,7 @@
         private System.Windows.Forms.MaskedTextBox mtbNgayNhamChuc;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.MaskedTextBox mtbNgayApDungTD;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

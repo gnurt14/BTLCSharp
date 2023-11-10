@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Office.Interop.Excel;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace QuanLyTienLuong
 {
@@ -17,6 +18,7 @@ namespace QuanLyTienLuong
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1");
         string manhanvien;
+        HoSoNhanVien nhanVien = new HoSoNhanVien();
         public FormChiTietNhanVien(string manv)
         {
             manhanvien = manv;
@@ -112,11 +114,11 @@ namespace QuanLyTienLuong
                     while (reader.Read())
                     {
                         string item = reader["tenchucvu"].ToString();
-                        cmbChucVu.Items.Add(item);  
+                        cmbChucVu.Items.Add(item);
                     }
                 }
             }
-            
+
             con.Close();
         }
         private void FormChiTietNhanVien_Load(object sender, EventArgs e)
@@ -124,8 +126,9 @@ namespace QuanLyTienLuong
             Load_Combobox();
             if (manhanvien != null)
             {
+                txtMaNV.Enabled = false;
                 string query = "select hs.manhanvien, hoten, ngaysinh,gioitinh,tennoisinh, tendantoc, hs.dienthoai,diachi, ngayvaocongty, \r\ntenphongban,tenchuyenmon, tentrinhdo, ntd.ngayapdung as n1, hesoluong.mahesoluong, nvl.ngayapdung as n2 , tenchucvu, ncv.ngayapdung as n3 from hosonhanvien hs \r\njoin noisinh on hs.manoisinh = noisinh.manoisinh\r\njoin dantoc on hs.madantoc = dantoc.madantoc\r\njoin phongban on hs.maphongban = phongban.maphongban\r\njoin chuyenmon on hs.machuyenmon = chuyenmon.Machuyenmon\r\njoin nhanvientrinhdo ntd on hs.manhanvien = ntd.manhanvien\r\njoin trinhdo on ntd.matrinhdo = trinhdo.Matrinhdo\r\njoin nhanvienhesoluong nvl on nvl.manhanvien = hs.manhanvien\r\njoin hesoluong on nvl.mahesoluong = hesoluong.mahesoluong\r\njoin NhanVienChucVu ncv on ncv.manhanvien = hs.manhanvien\r\njoin chucvu on ncv.machucvu = chucvu.machucvu" +
-                    "\r\nwhere hs.manhanvien = N'"+manhanvien+"'";
+                    "\r\nwhere hs.manhanvien = N'" + manhanvien + "'";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     con.Open();
@@ -150,29 +153,32 @@ namespace QuanLyTienLuong
                         DateTime ngayapdungchucvu = (DateTime)reader["n3"];
 
                         txtMaNV.Text = manhanvien;
-                        cmbNoiSinh.Text = tennoisinh;
-                        cmbDanToc.Text = tendantoc;
-                        txtHoTen.Text = hoten;
-                        mtbNgaySinh.Text = ngaysinh.ToString("dd/MM/yyyy");
-                        cmbGioiTinh.Text = gioitinh;
-                        txtDienThoai.Text = dienthoai;
-                        txtDiaChi.Text = diachi;
-                        mtbNgayVaoCongTy.Text = ngayvaocongty.ToString("dd/MM/yyyy");
-                        cmbPhongBan.Text = tenphongban;
-                        cmbChuyenMon.Text = tenchuyenmon;
-                        cmbTrinhDo.Text = tentrinhdo;
-                        cmbHeSoLuong.Text = tenhsl;
-                        cmbChucVu.Text = chucvu;
-                        mtbNgayApDungHSL.Text = ngayapdunghsl.ToString("dd/MM/yyyy");
-                        mtbNgayApDungTD.Text = ngayapdungtrinhdo.ToString("dd/MM/yyyy");
-                        mtbNgayNhamChuc.Text = ngayapdungchucvu.ToString("dd/MM/yyyy");
+                        nhanVien.NoiSinh = cmbNoiSinh.Text = reader["tennoisinh"].ToString();
+                        nhanVien.DanToc = cmbDanToc.Text = reader["tendantoc"].ToString();
+                        nhanVien.HoTen = txtHoTen.Text = reader["hoten"].ToString();
+                        nhanVien.NgaySinh = mtbNgaySinh.Text = ((DateTime)reader["ngaysinh"]).ToString("dd/MM/yyyy");
+                        nhanVien.GioiTinh = cmbGioiTinh.Text = reader["gioitinh"].ToString();
+                        nhanVien.SDT = txtDienThoai.Text = reader["dienthoai"].ToString();
+                        nhanVien.DiaChi = txtDiaChi.Text = reader["diachi"].ToString();
+                        nhanVien.NgayVaoCongTy = mtbNgayVaoCongTy.Text = ((DateTime)reader["ngayvaocongty"]).ToString("dd/MM/yyyy");
+                        nhanVien.PhongBan = cmbPhongBan.Text = reader["tenphongban"].ToString();
+                        nhanVien.ChuyenMon = cmbChuyenMon.Text = reader["tenchuyenmon"].ToString();
+                        nhanVien.TrinhDo = cmbTrinhDo.Text = reader["tentrinhdo"].ToString();
+                        nhanVien.HeSoLuong = cmbHeSoLuong.Text = "HSL Bậc " + reader["mahesoluong"].ToString();
+                        nhanVien.ChucVu = cmbChucVu.Text = reader["tenchucvu"].ToString();
+                        nhanVien.NgayApDungHSL = mtbNgayApDungHSL.Text = ((DateTime)reader["n2"]).ToString("dd/MM/yyyy");
+                        nhanVien.NgayApDungTD = mtbNgayApDungTD.Text = ((DateTime)reader["n1"]).ToString("dd/MM/yyyy");
+                        nhanVien.NgayNhamChuc = mtbNgayNhamChuc.Text = ((DateTime)reader["n3"]).ToString("dd/MM/yyyy");
                     }
                     reader.Close();
                     con.Close();
                 }
+                Console.WriteLine(mtbNgayVaoCongTy.Text);
             }
         }
 
+
+        //Cập nhật thông tin
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (txtMaNV.Text == string.Empty ||
@@ -197,17 +203,43 @@ namespace QuanLyTienLuong
             }
             else
             {
-                if (CustomMessageBox.Show("Bạn có chắc chắn muốn chỉnh sửa", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                int cnt = 0;
+                if (CustomMessageBox.Show("Bạn chắc chắn thay đổi thông tin của nhân viên ?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    string query = "update hosonhanvien";
-                    using (SqlCommand command = new SqlCommand(query, con))
+                    SqlCommand cmd = new SqlCommand();
+                    if (nhanVien.HoTen.Trim() != txtHoTen.Text.Trim())
                     {
-
+                        con.Open();
+                        cmd = con.CreateCommand();
+                        cmd.CommandText = "update hosonhanvien set hoten = N'" + txtHoTen.Text + "' where manhanvien = N'" + txtMaNV.Text + "'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        cnt++;
                     }
+                    if(nhanVien.NgaySinh != mtbNgaySinh.Text)
+                    {
+                        if (DateTime.TryParseExact(mtbNgaySinh.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            string ngaysinh = parsedDate.ToString("yyyy-MM-dd");
+                            con.Open();
+                            cmd = con.CreateCommand();
+                            cmd.CommandText = "update hosonhanvien set ngaysinh = @ngaysinh where manhanvien = N'" + txtMaNV.Text + "'";
+                            cmd.Parameters.AddWithValue("ngaysinh", ngaysinh);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            cnt++; 
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show("Vui lòng nhập lại ngày sinh hợp lệ");
+                        }
+                    }
+                    
                 }
+                CustomMessageBox.Show("Cập nhật thông tin thành công!\n Đã có " + cnt + " thay đổi");
             }
         }
-
+        // Làm mới
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtMaNV.Text = string.Empty;
@@ -229,6 +261,8 @@ namespace QuanLyTienLuong
             mtbNgayApDungTD.Text = string.Empty;
         }
 
+
+        // Thêm nhân viên
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
             if (txtMaNV.Text == string.Empty ||
@@ -348,6 +382,35 @@ namespace QuanLyTienLuong
                     }
                 }
             }
+        }
+
+
+        // Quay lại trang tìm kiếm
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if(CustomMessageBox.Show("Bạn có muốn tiếp tục chỉnh sửa?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+
+        // Drag
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label13_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

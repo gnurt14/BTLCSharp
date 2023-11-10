@@ -198,8 +198,15 @@ namespace QuanLyTienLuong
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV);
-            frm.ShowDialog();
+            if (selectedMaNV == null || selectedMaNV == string.Empty)
+            {
+                CustomMessageBox.Show("Vui lòng chọn 1 nhân viên");
+            }
+            else
+            {
+                FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV);
+                frm.ShowDialog();
+            }
         }
 
         private void dgvTimKiem_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -213,76 +220,82 @@ namespace QuanLyTienLuong
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult result = CustomMessageBox.Show("Bạn có chắc chắn muốn xoá nhân viên này?", "Cảnh báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            if (selectedMaNV == null || selectedMaNV == string.Empty)
             {
-                try
+                CustomMessageBox.Show("Vui lòng chọn 1 nhân viên");
+            }
+            else
+            {
+                DialogResult result = CustomMessageBox.Show("Bạn có chắc chắn muốn xoá nhân viên này?", "Cảnh báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    string queryDeleteNhanVien = "DELETE FROM hosonhanvien WHERE manhanvien = @manhanvien";
-                    string queryDeleteChucVu = "DELETE FROM nhanvienchucvu WHERE manhanvien = @manhanvien";
-                    string queryDeleteTrinhDo = "DELETE FROM nhanvientrinhdo WHERE manhanvien = @manhanvien";
-                    string queryDeleteHeSoLuong = "DELETE FROM nhanvienhesoluong WHERE manhanvien = @manhanvien";
-                    string queryDeleteKhenThuongKyLuat = "DELETE FROM khenthuongkyluat WHERE manhanvien = @manhanvien";
-                    string queryDeleteLuong = "DELETE FROM luong WHERE manhanvien = @manhanvien";
-                    con.Open();
-                    using (SqlTransaction transaction = con.BeginTransaction())
+                    try
                     {
-                        try
+                        string queryDeleteNhanVien = "DELETE FROM hosonhanvien WHERE manhanvien = @manhanvien";
+                        string queryDeleteChucVu = "DELETE FROM nhanvienchucvu WHERE manhanvien = @manhanvien";
+                        string queryDeleteTrinhDo = "DELETE FROM nhanvientrinhdo WHERE manhanvien = @manhanvien";
+                        string queryDeleteHeSoLuong = "DELETE FROM nhanvienhesoluong WHERE manhanvien = @manhanvien";
+                        string queryDeleteKhenThuongKyLuat = "DELETE FROM khenthuongkyluat WHERE manhanvien = @manhanvien";
+                        string queryDeleteLuong = "DELETE FROM luong WHERE manhanvien = @manhanvien";
+                        con.Open();
+                        using (SqlTransaction transaction = con.BeginTransaction())
                         {
-                            using (SqlCommand commandNhanVien = new SqlCommand(queryDeleteNhanVien, con, transaction))
+                            try
                             {
-                                commandNhanVien.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandNhanVien.ExecuteNonQuery();
-                            }
+                                using (SqlCommand commandNhanVien = new SqlCommand(queryDeleteNhanVien, con, transaction))
+                                {
+                                    commandNhanVien.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandNhanVien.ExecuteNonQuery();
+                                }
 
-                            using (SqlCommand commandHeSoLuong = new SqlCommand(queryDeleteHeSoLuong, con, transaction))
+                                using (SqlCommand commandHeSoLuong = new SqlCommand(queryDeleteHeSoLuong, con, transaction))
+                                {
+                                    commandHeSoLuong.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandHeSoLuong.ExecuteNonQuery();
+                                }
+
+                                using (SqlCommand commandTrinhDo = new SqlCommand(queryDeleteTrinhDo, con, transaction))
+                                {
+                                    commandTrinhDo.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandTrinhDo.ExecuteNonQuery();
+                                }
+
+                                using (SqlCommand commandKhenThuongKyLuat = new SqlCommand(queryDeleteKhenThuongKyLuat, con, transaction))
+                                {
+                                    commandKhenThuongKyLuat.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandKhenThuongKyLuat.ExecuteNonQuery();
+                                }
+
+                                using (SqlCommand commandLuong = new SqlCommand(queryDeleteLuong, con, transaction))
+                                {
+                                    commandLuong.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandLuong.ExecuteNonQuery();
+                                }
+
+                                using (SqlCommand commandChucVu = new SqlCommand(queryDeleteChucVu, con, transaction))
+                                {
+                                    commandChucVu.Parameters.AddWithValue("@manhanvien", selectedMaNV);
+                                    commandChucVu.ExecuteNonQuery();
+                                }
+
+                                transaction.Commit();
+                                CustomMessageBox.Show("Xoá nhân viên hoàn tất");
+                            }
+                            catch (Exception ex)
                             {
-                                commandHeSoLuong.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandHeSoLuong.ExecuteNonQuery();
+                                transaction.Rollback();
+                                CustomMessageBox.Show("Đã xảy ra lỗi khi xoá nhân viên: " + ex.Message);
                             }
-
-                            using (SqlCommand commandTrinhDo = new SqlCommand(queryDeleteTrinhDo, con, transaction))
-                            {
-                                commandTrinhDo.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandTrinhDo.ExecuteNonQuery();
-                            }
-
-                            using (SqlCommand commandKhenThuongKyLuat = new SqlCommand(queryDeleteKhenThuongKyLuat, con, transaction))
-                            {
-                                commandKhenThuongKyLuat.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandKhenThuongKyLuat.ExecuteNonQuery();
-                            }
-
-                            using (SqlCommand commandLuong = new SqlCommand(queryDeleteLuong, con, transaction))
-                            {
-                                commandLuong.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandLuong.ExecuteNonQuery();
-                            }
-
-                            using (SqlCommand commandChucVu = new SqlCommand(queryDeleteChucVu, con, transaction))
-                            {
-                                commandChucVu.Parameters.AddWithValue("@manhanvien", selectedMaNV);
-                                commandChucVu.ExecuteNonQuery();
-                            }
-
-                            transaction.Commit();
-                            CustomMessageBox.Show("Xoá nhân viên hoàn tất");
                         }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            CustomMessageBox.Show("Đã xảy ra lỗi khi xoá nhân viên: " + ex.Message);
-                        }
+                        con.Close();
                     }
-                    con.Close();
+                    catch (Exception ex)
+                    {
+                        CustomMessageBox.Show("Đã xảy ra lỗi khi kết nối cơ sở dữ liệu: " + ex.Message);
+                    }
+                    Load_data();
                 }
-                catch (Exception ex)
-                {
-                    CustomMessageBox.Show("Đã xảy ra lỗi khi kết nối cơ sở dữ liệu: " + ex.Message);
-                }
-                Load_data();
             }
         }
-       
     }
 }
