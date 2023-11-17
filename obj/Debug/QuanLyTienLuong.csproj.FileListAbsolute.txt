@@ -5,7 +5,6 @@ C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\SqlServerTypes\x86\SqlServ
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\QuanLyTienLuong.exe.config
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\QuanLyTienLuong.exe
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\QuanLyTienLuong.pdb
-C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\AlphaBlendTextBox.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.ReportSource.dll
 C:\Users\Admin\source\repos\QuanLyTienLuong\bin\Debug\CrystalDecisions.Shared.dll

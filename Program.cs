@@ -16,7 +16,7 @@ namespace QuanLyTienLuong
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDashboard(true));
+            Application.Run(new FormDangNhap());
         }
     }
 }

@@ -52,6 +52,26 @@ namespace QuanLyTienLuong
             adapterData.SelectCommand = command;
             adapterData.Fill(dt);
             dgvTinhLuong.DataSource = dt;
+            dgvTinhLuong.Columns["manhanvien"].HeaderText = "Mã nhân viên";
+            dgvTinhLuong.Columns["manhanvien"].Width = 120;
+            dgvTinhLuong.Columns["hoten"].HeaderText = "Họ tên";
+            dgvTinhLuong.Columns["hoten"].Width = 150;
+            dgvTinhLuong.Columns["tenchucvu"].HeaderText = "Chức vụ";
+            dgvTinhLuong.Columns["tenchucvu"].Width = 120;
+            dgvTinhLuong.Columns["luong"].HeaderText = "Lương";
+            dgvTinhLuong.Columns["luong"].Width = 150;
+            dgvTinhLuong.Columns["thang"].HeaderText = "Tháng";
+            dgvTinhLuong.Columns["thang"].Width = 50;
+            dgvTinhLuong.Columns["phucap"].HeaderText = "Phụ cấp";
+            dgvTinhLuong.Columns["phucap"].Width = 150;
+            dgvTinhLuong.Columns["baohiemyte"].HeaderText = "BHYT";
+            dgvTinhLuong.Columns["baohiemyte"].Width = 150;
+            dgvTinhLuong.Columns["baohiemxahoi"].HeaderText = "BHXH";
+            dgvTinhLuong.Columns["baohiemxahoi"].Width = 150;
+            dgvTinhLuong.Columns["khenthuongkl"].HeaderText = "KT/KL";
+            dgvTinhLuong.Columns["khenthuongkl"].Width = 150;
+            dgvTinhLuong.Columns["thuclinh"].HeaderText = "Thực lĩnh";
+            dgvTinhLuong.Columns["thuclinh"].Width = 150;
         }
         private void FormTinhLuong_Load(object sender, EventArgs e)
         {

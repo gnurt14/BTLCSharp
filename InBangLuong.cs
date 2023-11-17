@@ -12,34 +12,42 @@ namespace QuanLyTienLuong
 {
     internal class InBangLuong
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1");
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-OI20CUM\\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1");
         SqlCommand command = new SqlCommand();
         public void InBangLuongChiTiet(string query, string tenbangluong, string thangluong, string phongban)
         {
-            
-            con.Open();
-
-            // Truy vấn dữ liệu từ SQL Server
-            SqlDataReader reader = command.ExecuteReader();
-
             // Tạo danh sách nhân viên
             List<NhanVien> employees = new List<NhanVien>();
-            while (reader.Read())
+            try
             {
-                NhanVien nhanvien = new NhanVien
-                {
-                    hoten = reader["hoten"].ToString(),
-                    luong = (float)Convert.ToDouble(reader["luong"]),
-                    PhuCap = (float)Convert.ToDouble(reader["phucap"]),
-                    BHYT = (float)Convert.ToDouble(reader["baohiemyte"]),
-                    BHXH = (float)Convert.ToDouble(reader["baohiemxahoi"]),
-                    KTKL = (float)Convert.ToDouble(reader["khenthuongKL"]),
-                    ThucLinh = (float)Convert.ToDouble(reader["thuclinh"])
-                };
-                employees.Add(nhanvien);
+                using (SqlConnection connect = new SqlConnection("Data Source=DESKTOP-OI20CUM\\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1")) {
+                    connect.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                NhanVien nhanvien = new NhanVien
+                                {
+                                    hoten = reader["hoten"].ToString(),
+                                    luong = (float)Convert.ToDouble(reader["luong"]),
+                                    PhuCap = (float)Convert.ToDouble(reader["phucap"]),
+                                    BHYT = (float)Convert.ToDouble(reader["baohiemyte"]),
+                                    BHXH = (float)Convert.ToDouble(reader["baohiemxahoi"]),
+                                    KTKL = (float)Convert.ToDouble(reader["khenthuongKL"]),
+                                    ThucLinh = (float)Convert.ToDouble(reader["thuclinh"])
+                                };
+                                employees.Add(nhanvien);
+                            }
+                        }
+                    }
+                }
             }
-            reader.Close();
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             Excel.Worksheet worksheet = workbook.ActiveSheet;
