@@ -53,6 +53,7 @@
             this.dgvTimKiem.BackgroundColor = System.Drawing.Color.White;
             this.dgvTimKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimKiem.Location = new System.Drawing.Point(12, 12);
+            this.dgvTimKiem.MultiSelect = false;
             this.dgvTimKiem.Name = "dgvTimKiem";
             this.dgvTimKiem.RowHeadersWidth = 51;
             this.dgvTimKiem.RowTemplate.Height = 24;
@@ -114,6 +115,7 @@
             this.txtHoTen.Size = new System.Drawing.Size(250, 35);
             this.txtHoTen.TabIndex = 2;
             this.txtHoTen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtHoTen_MouseClick);
+            this.txtHoTen.TextChanged += new System.EventHandler(this.txtHoTen_TextChanged);
             // 
             // cmbHeSoLuong
             // 

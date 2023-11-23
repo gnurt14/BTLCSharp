@@ -68,7 +68,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.mtbNgayApDungTD = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.btnCloseDashboard = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -489,7 +489,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(77)))));
-            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.btnCloseDashboard);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -498,14 +498,19 @@
             this.panel1.TabIndex = 20;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // btnBack
+            // btnCloseDashboard
             // 
-            this.btnBack.Location = new System.Drawing.Point(13, 13);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(60, 34);
-            this.btnBack.TabIndex = 18;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnCloseDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseDashboard.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseDashboard.FlatAppearance.BorderSize = 0;
+            this.btnCloseDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseDashboard.Image = global::QuanLyTienLuong.Properties.Resources.icons8_close_window_30;
+            this.btnCloseDashboard.Location = new System.Drawing.Point(1029, 12);
+            this.btnCloseDashboard.Name = "btnCloseDashboard";
+            this.btnCloseDashboard.Size = new System.Drawing.Size(30, 30);
+            this.btnCloseDashboard.TabIndex = 19;
+            this.btnCloseDashboard.UseVisualStyleBackColor = false;
+            this.btnCloseDashboard.Click += new System.EventHandler(this.btnCloseDashboard_Click_1);
             // 
             // FormChiTietNhanVien
             // 
@@ -605,6 +610,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.MaskedTextBox mtbNgayApDungTD;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnCloseDashboard;
     }
 }

@@ -40,7 +40,7 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.btnTinhLuong = new System.Windows.Forms.Button();
             this.btnInBangLuongNV = new System.Windows.Forms.Button();
-            this.InLuongPhongBan = new System.Windows.Forms.Button();
+            this.btnInBangLuongPhongBan = new System.Windows.Forms.Button();
             this.btnBaoCaoLuong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTinhLuong)).BeginInit();
             this.SuspendLayout();
@@ -66,10 +66,10 @@
             this.cmbPhongBan.Name = "cmbPhongBan";
             this.cmbPhongBan.Size = new System.Drawing.Size(239, 37);
             this.cmbPhongBan.TabIndex = 1;
+            this.cmbPhongBan.SelectedIndexChanged += new System.EventHandler(this.cmbPhongBan_SelectedIndexChanged_1);
             // 
             // dgvTinhLuong
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Empty;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
             this.dgvTinhLuong.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -95,6 +95,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTinhLuong.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTinhLuong.Location = new System.Drawing.Point(12, 12);
+            this.dgvTinhLuong.MultiSelect = false;
             this.dgvTinhLuong.Name = "dgvTinhLuong";
             this.dgvTinhLuong.ReadOnly = true;
             this.dgvTinhLuong.RowHeadersWidth = 51;
@@ -102,6 +103,7 @@
             this.dgvTinhLuong.Size = new System.Drawing.Size(693, 596);
             this.dgvTinhLuong.TabIndex = 6;
             this.dgvTinhLuong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTinhLuong_CellClick);
+            this.dgvTinhLuong.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTinhLuong_CellDoubleClick);
             // 
             // label2
             // 
@@ -121,13 +123,13 @@
             this.cmbThang.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbThang.FormattingEnabled = true;
             this.cmbThang.Items.AddRange(new object[] {
-            "Tháng 1 ",
+            "Tháng 1",
             "Tháng 2 ",
             "Tháng 3",
             "Tháng 4",
             "Tháng 5",
             "Tháng 6",
-            "Tháng 7\t",
+            "Tháng 7",
             "Tháng 8",
             "Tháng 9",
             "Tháng 10",
@@ -176,10 +178,10 @@
             this.btnTinhLuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTinhLuong.Location = new System.Drawing.Point(746, 247);
             this.btnTinhLuong.Name = "btnTinhLuong";
-            this.btnTinhLuong.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnTinhLuong.Padding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnTinhLuong.Size = new System.Drawing.Size(291, 58);
             this.btnTinhLuong.TabIndex = 5;
-            this.btnTinhLuong.Text = "Tính lương phòng ban";
+            this.btnTinhLuong.Text = "Tính lương";
             this.btnTinhLuong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTinhLuong.UseVisualStyleBackColor = false;
             this.btnTinhLuong.Click += new System.EventHandler(this.btnTinhLuong_Click);
@@ -205,26 +207,26 @@
             this.btnInBangLuongNV.UseVisualStyleBackColor = false;
             this.btnInBangLuongNV.Click += new System.EventHandler(this.btnInBangLuongNV_Click);
             // 
-            // InLuongPhongBan
+            // btnInBangLuongPhongBan
             // 
-            this.InLuongPhongBan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InLuongPhongBan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(208)))), ((int)(((byte)(168)))));
-            this.InLuongPhongBan.FlatAppearance.BorderSize = 0;
-            this.InLuongPhongBan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
-            this.InLuongPhongBan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
-            this.InLuongPhongBan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InLuongPhongBan.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InLuongPhongBan.Image = global::QuanLyTienLuong.Properties.Resources.icons8_printer_25;
-            this.InLuongPhongBan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InLuongPhongBan.Location = new System.Drawing.Point(746, 311);
-            this.InLuongPhongBan.Name = "InLuongPhongBan";
-            this.InLuongPhongBan.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.InLuongPhongBan.Size = new System.Drawing.Size(291, 58);
-            this.InLuongPhongBan.TabIndex = 8;
-            this.InLuongPhongBan.Text = "In bảng lương phòng ban";
-            this.InLuongPhongBan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.InLuongPhongBan.UseVisualStyleBackColor = false;
-            this.InLuongPhongBan.Click += new System.EventHandler(this.btnInBangLuongPhongBan_Click);
+            this.btnInBangLuongPhongBan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInBangLuongPhongBan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(208)))), ((int)(((byte)(168)))));
+            this.btnInBangLuongPhongBan.FlatAppearance.BorderSize = 0;
+            this.btnInBangLuongPhongBan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
+            this.btnInBangLuongPhongBan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(172)))), ((int)(((byte)(255)))));
+            this.btnInBangLuongPhongBan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInBangLuongPhongBan.Font = new System.Drawing.Font("SVN-Nexa Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInBangLuongPhongBan.Image = global::QuanLyTienLuong.Properties.Resources.icons8_printer_25;
+            this.btnInBangLuongPhongBan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInBangLuongPhongBan.Location = new System.Drawing.Point(746, 311);
+            this.btnInBangLuongPhongBan.Name = "btnInBangLuongPhongBan";
+            this.btnInBangLuongPhongBan.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInBangLuongPhongBan.Size = new System.Drawing.Size(291, 58);
+            this.btnInBangLuongPhongBan.TabIndex = 8;
+            this.btnInBangLuongPhongBan.Text = "In bảng lương phòng ban";
+            this.btnInBangLuongPhongBan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInBangLuongPhongBan.UseVisualStyleBackColor = false;
+            this.btnInBangLuongPhongBan.Click += new System.EventHandler(this.btnInBangLuongPhongBan_Click);
             // 
             // btnBaoCaoLuong
             // 
@@ -253,7 +255,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1071, 620);
-            this.Controls.Add(this.InLuongPhongBan);
+            this.Controls.Add(this.btnInBangLuongPhongBan);
             this.Controls.Add(this.btnBaoCaoLuong);
             this.Controls.Add(this.btnInBangLuongNV);
             this.Controls.Add(this.dgvTinhLuong);
@@ -284,7 +286,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Button btnInBangLuongNV;
-        private System.Windows.Forms.Button InLuongPhongBan;
+        private System.Windows.Forms.Button btnInBangLuongPhongBan;
         private System.Windows.Forms.Button btnBaoCaoLuong;
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyTienLuong
 {
@@ -22,6 +25,20 @@ namespace QuanLyTienLuong
              và 1 kí tự đặc biệt */
             string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$";
             return Regex.IsMatch(password, pattern);
+        }
+        public static bool ValidateTimeMaskTextBox(MaskedTextBox maskedTextBox)
+        {
+            DateTime parsedDate;
+
+            string input = maskedTextBox.Text;
+            if (DateTime.TryParseExact(input, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

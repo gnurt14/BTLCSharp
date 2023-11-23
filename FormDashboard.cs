@@ -17,6 +17,7 @@ namespace QuanLyTienLuong
     {
         private Form activeForm = null;
         private Button currentButton;
+        private Button previousButton;
         private bool isAdmin;
         private Image tempImage;
         public FormDashboard(bool isAdmin)
@@ -60,14 +61,10 @@ namespace QuanLyTienLuong
             ActivateButton(sender);
         }
 
-
+        
         private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
             if (CustomMessageBox.Show("Bạn có muốn đăng xuất khỏi hệ thống?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 FormDangNhap formDangNhap = new FormDangNhap();
@@ -78,6 +75,12 @@ namespace QuanLyTienLuong
                 this.Hide();
                 formDangNhap.ShowDialog();
                 this.Close();
+            }
+            else
+            {
+                DisableButton();
+                currentButton = previousButton;
+                ActivateButton(currentButton);
             }
         }
 
@@ -117,6 +120,7 @@ namespace QuanLyTienLuong
             if (sender != null)
             {
                 DisableButton();
+                previousButton = currentButton;
                 currentButton = (Button)sender;
                 currentButton.BackColor = System.Drawing.Color.FromArgb(107, 83, 225);
                 currentButton.ForeColor = System.Drawing.Color.FromArgb(244, 249, 255);
@@ -125,11 +129,8 @@ namespace QuanLyTienLuong
                     lbChildForm.Text = "Quản lý tài khoản";
                     iconChildForm.Image = currentButton.Image;
                 }
-                if (currentButton != btnDangXuat)
-                {
-                    lbChildForm.Text = currentButton.Text;
-                    iconChildForm.Image = currentButton.Image;
-                }
+                lbChildForm.Text = currentButton.Text;
+                iconChildForm.Image = currentButton.Image;
             }
         }
 

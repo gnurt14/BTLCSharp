@@ -88,3 +88,4 @@ C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.csproj.Cor
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.csproj.CopyComplete
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.exe
 C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.pdb
+C:\Users\Admin\source\repos\QuanLyTienLuong\obj\Debug\QuanLyTienLuong.FormKTKL.resources

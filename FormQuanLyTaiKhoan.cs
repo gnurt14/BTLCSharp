@@ -20,6 +20,9 @@ namespace QuanLyTienLuong
         public FormQuanLyTaiKhoan()
         {
             InitializeComponent();
+            btnHuyBo.Enabled = false;
+            btnCapNhat.Enabled = false;
+            btnXoa.Enabled = false;
         }
         void Load_Data()
         {
@@ -126,6 +129,7 @@ namespace QuanLyTienLuong
                     Load_Data();
                     con.Close();
                 }
+                CustomMessageBox.Show("Xoá tài khoản hoàn tất!");
             }
             else
             {
@@ -137,6 +141,11 @@ namespace QuanLyTienLuong
             txtTaiKhoan.Text = string.Empty;
             txtMatKhau.Text = string.Empty;
             cmbLoaiTaiKhoan.SelectedItem = null;
+            txtTaiKhoan.Enabled = true;
+            btnThemMoi.Enabled = true;
+            btnCapNhat.Enabled = false;
+            btnXoa.Enabled = false;
+            btnHuyBo.Enabled = false;
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -184,6 +193,7 @@ namespace QuanLyTienLuong
                     }
                     con.Close();
                 }
+                CustomMessageBox.Show("Cập nhật tài khoản thành công");
             }
             Load_Data();
         }
@@ -192,6 +202,11 @@ namespace QuanLyTienLuong
         {
             if (e.RowIndex >= 0)
             {
+                txtTaiKhoan.Enabled = false;
+                btnThemMoi.Enabled = false;
+                btnCapNhat.Enabled = true;
+                btnXoa.Enabled = true;
+                btnHuyBo.Enabled = true;
                 DataGridViewRow selectedRow = dgvQLTK.Rows[e.RowIndex];
                 txtTaiKhoan.Text = selectedRow.Cells[0].Value.ToString();
                 txtMatKhau.Text = selectedRow.Cells[1].Value.ToString();

@@ -15,7 +15,8 @@ namespace QuanLyTienLuong
     public partial class FormTimKiem : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1");
-        string selectedMaNV;
+        string selectedMaNV, selectedNV;
+        bool isUpdate = false;
         public FormTimKiem()
         {
             InitializeComponent();
@@ -127,7 +128,7 @@ namespace QuanLyTienLuong
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (txtHoTen.Text == string.Empty && cmbChuyenMon.SelectedItem == null && cmbTrinhDo.SelectedItem == null && cmbHeSoLuong.SelectedItem == null)
+            if (txtHoTen.Text.Trim() == string.Empty && cmbChuyenMon.SelectedItem == null && cmbTrinhDo.SelectedItem == null && cmbHeSoLuong.SelectedItem == null)
             {
                 CustomMessageBox.Show("Vui lòng chọn một trường tìm kiếm", "Thông báo");
             }
@@ -181,7 +182,8 @@ namespace QuanLyTienLuong
         }
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            FormChiTietNhanVien frm = new FormChiTietNhanVien(null);
+            isUpdate = false;
+            FormChiTietNhanVien frm = new FormChiTietNhanVien(null, isUpdate);
             frm.ShowDialog();
         }
 
@@ -189,13 +191,18 @@ namespace QuanLyTienLuong
         {
             if (e.RowIndex >= 0)
             {
+                bool isUpdate = true;
                 DataGridViewRow selectedRow = dgvTimKiem.Rows[e.RowIndex];
                 selectedMaNV = selectedRow.Cells["manhanvien"].Value.ToString();
-                FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV);
+                FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV, isUpdate);
+                frm.FormClosed += FormChiTietNhanVien_FormClosed;
                 frm.ShowDialog();
             }
         }
-
+        private void FormChiTietNhanVien_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Load_data();
+        }
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (selectedMaNV == null || selectedMaNV == string.Empty)
@@ -204,7 +211,8 @@ namespace QuanLyTienLuong
             }
             else
             {
-                FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV);
+                isUpdate = true;
+                FormChiTietNhanVien frm = new FormChiTietNhanVien(selectedMaNV, isUpdate);
                 frm.ShowDialog();
             }
         }
@@ -215,6 +223,7 @@ namespace QuanLyTienLuong
             {
                 DataGridViewRow selectedRow = dgvTimKiem.Rows[e.RowIndex];
                 selectedMaNV = selectedRow.Cells["manhanvien"].Value.ToString();
+                selectedNV = selectedRow.Cells["hoten"].Value.ToString();
             }
         }
 
@@ -226,8 +235,7 @@ namespace QuanLyTienLuong
             }
             else
             {
-                DialogResult result = CustomMessageBox.Show("Bạn có chắc chắn muốn xoá nhân viên này?", "Cảnh báo", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (CustomMessageBox.Show("Bạn có chắc chắn muốn xoá nhân viên " + selectedNV + " ?", "Cảnh báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     try
                     {
@@ -295,6 +303,14 @@ namespace QuanLyTienLuong
                     }
                     Load_data();
                 }
+            }
+        }
+
+        private void txtHoTen_TextChanged(object sender, EventArgs e)
+        {
+            if(txtHoTen.Text == string.Empty)
+            {
+                Load_data();
             }
         }
     }
