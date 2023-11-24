@@ -174,6 +174,7 @@ namespace QuanLyTienLuong
                         }
                         if(maphongban1 == 6)
                         {
+                            btnInBangLuongPhongBan.Enabled = false;
                             List<int> Maphongban = new List<int> { 1, 2, 3, 4, 5 };
                             foreach (int departmentCode in Maphongban)
                             {
@@ -356,7 +357,6 @@ namespace QuanLyTienLuong
                             }
                             CustomMessageBox.Show($"Tính lương cho tháng {thang} hoàn tất.");
                             Load_data(selectedMonth.ToString(), false);
-                            btnInBangLuongPhongBan.Enabled = true;
                             btnInBangLuongNV.Enabled = true;
                             btnBaoCaoLuong.Enabled = true;
                         }
@@ -984,6 +984,7 @@ namespace QuanLyTienLuong
             string selectQuery = "select manhanvien, hoten from hosonhanvien where maphongban = @maphongban";
             if (maphongban1 == 6)
             {
+                btnInBangLuongPhongBan.Enabled = false; 
                 using (SqlCommand selectCommand2 = new SqlCommand(selectallQuery, con))
                 {
                     con.Open();

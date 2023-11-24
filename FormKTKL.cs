@@ -43,52 +43,60 @@ namespace QuanLyTienLuong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1"))
+            if (rdbKhong.Checked == true)
             {
-                con.Open();
-                string[] parts = thangktkl.Split(' ');
-                string thangs = parts[parts.Length - 1];
-                using (SqlTransaction transaction = con.BeginTransaction())
+                this.Close();
+                CustomMessageBox.Show("Thêm hoàn tất");
+            }
+            else
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-OI20CUM\ADMIN;Initial Catalog=QuanLyTinhLuong;User ID=sa;Password=1"))
                 {
-                    try
+                    con.Open();
+                    string[] parts = thangktkl.Split(' ');
+                    string thangs = parts[parts.Length - 1];
+                    using (SqlTransaction transaction = con.BeginTransaction())
                     {
-                        string query = "INSERT INTO khenthuongkyluat(manhanvien, loaiktkl, thang, nam, malydoktkl, tienktkl) VALUES (@manhanvien, @loaiktkl, @thang, @nam, @malydoktkl, @tienktkl)";
-                        string updateplusquery = "UPDATE luong SET khenthuongKL = khenthuongKL + @tienktkl, thuclinh = thuclinh + @tienktkl WHERE thang = @thangs AND nam = @nams AND manhanvien = @manhanvien";
-                        string updateminusquery = "UPDATE luong SET khenthuongKL = khenthuongKL - @tienktkl, thuclinh = thuclinh - @tienktkl WHERE thang = @thangs AND nam = @nams AND manhanvien = @manhanvien";
-
-                        using (SqlCommand command = new SqlCommand(query, con, transaction))
+                        try
                         {
-                            command.Parameters.AddWithValue("@manhanvien", manhanvien);
-                            command.Parameters.AddWithValue("@loaiktkl", txtLyDoKTKL.Text);
-                            command.Parameters.AddWithValue("@thang", thangs);
-                            command.Parameters.AddWithValue("@nam", namktkl);
-                            command.Parameters.AddWithValue("@malydoktkl", rdbKhenThuong.Checked ? 1 : 2);
-                            command.Parameters.AddWithValue("@tienktkl", txtTienKTKL.Text);
+                            string query = "INSERT INTO khenthuongkyluat(manhanvien, loaiktkl, thang, nam, malydoktkl, tienktkl) VALUES (@manhanvien, @loaiktkl, @thang, @nam, @malydoktkl, @tienktkl)";
+                            string updateplusquery = "UPDATE luong SET khenthuongKL = khenthuongKL + @tienktkl, thuclinh = thuclinh + @tienktkl WHERE thang = @thangs AND nam = @nams AND manhanvien = @manhanvien";
+                            string updateminusquery = "UPDATE luong SET khenthuongKL = khenthuongKL - @tienktkl, thuclinh = thuclinh - @tienktkl WHERE thang = @thangs AND nam = @nams AND manhanvien = @manhanvien";
 
-                            command.ExecuteNonQuery();
+                            using (SqlCommand command = new SqlCommand(query, con, transaction))
+                            {
+                                command.Parameters.AddWithValue("@manhanvien", manhanvien);
+                                command.Parameters.AddWithValue("@loaiktkl", txtLyDoKTKL.Text);
+                                command.Parameters.AddWithValue("@thang", thangs);
+                                command.Parameters.AddWithValue("@nam", namktkl);
+                                command.Parameters.AddWithValue("@malydoktkl", rdbKhenThuong.Checked ? 1 : 2);
+                                command.Parameters.AddWithValue("@tienktkl", txtTienKTKL.Text);
+
+                                command.ExecuteNonQuery();
+                            }
+
+                            string updatequery = rdbKhenThuong.Checked ? updateplusquery : updateminusquery;
+
+                            using (SqlCommand updateCommand = new SqlCommand(updatequery, con, transaction))
+                            {
+                                updateCommand.Parameters.AddWithValue("@manhanvien", manhanvien);
+                                updateCommand.Parameters.AddWithValue("@thangs", thangs);
+                                updateCommand.Parameters.AddWithValue("@nams", namktkl);
+                                updateCommand.Parameters.AddWithValue("@tienktkl", txtTienKTKL.Text);
+
+                                updateCommand.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                            CustomMessageBox.Show(rdbKhenThuong.Checked ? "Thêm khen thưởng thành công!" : "Thêm kỷ luật thành công!");
+                            this.Close();
                         }
-
-                        string updatequery = rdbKhenThuong.Checked ? updateplusquery : updateminusquery;
-
-                        using (SqlCommand updateCommand = new SqlCommand(updatequery, con, transaction))
+                        catch (Exception ex)
                         {
-                            updateCommand.Parameters.AddWithValue("@manhanvien", manhanvien);
-                            updateCommand.Parameters.AddWithValue("@thangs", thangs);
-                            updateCommand.Parameters.AddWithValue("@nams", namktkl);
-                            updateCommand.Parameters.AddWithValue("@tienktkl", txtTienKTKL.Text);
-
-                            updateCommand.ExecuteNonQuery();
+                            transaction.Rollback();
+                            Console.WriteLine(ex.Message);
+                            CustomMessageBox.Show("Thêm không thành công. Vui lòng kiểm tra lại.");
                         }
-
-                        transaction.Commit();
-                        CustomMessageBox.Show(rdbKhenThuong.Checked ? "Thêm khen thưởng thành công!" : "Thêm kỷ luật thành công!");
-                        this.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        Console.WriteLine(ex.Message);
-                        CustomMessageBox.Show("Thêm không thành công. Vui lòng kiểm tra lại.");
                     }
                 }
             }
