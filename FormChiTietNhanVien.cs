@@ -270,6 +270,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.NgaySinh != mtbNgaySinh.Text)
                         {
@@ -283,6 +284,7 @@ namespace QuanLyTienLuong
                                 cmd.ExecuteNonQuery();
                                 if (con.State == ConnectionState.Open)
                                     cnt++;
+                                con.Close();
                             }
                             else
                             {
@@ -297,6 +299,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.NoiSinh != cmbNoiSinh.Text)
                         {
@@ -306,6 +309,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.DanToc != cmbDanToc.Text)
                         {
@@ -315,6 +319,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.SDT != txtDienThoai.Text)
                         {
@@ -324,6 +329,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.DiaChi != txtDiaChi.Text)
                         {
@@ -333,6 +339,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.NgayVaoCongTy != mtbNgayVaoCongTy.Text)
                         {
@@ -346,6 +353,7 @@ namespace QuanLyTienLuong
                                 cmd.ExecuteNonQuery();
                                 if (con.State == ConnectionState.Open)
                                     cnt++;
+                                con.Close();
                             }
                             else
                             {
@@ -360,6 +368,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.ChuyenMon != cmbChuyenMon.Text)
                         {
@@ -369,6 +378,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.TrinhDo != cmbTrinhDo.Text)
                         {
@@ -378,6 +388,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.HeSoLuong != cmbHeSoLuong.Text)
                         {
@@ -387,6 +398,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.ChucVu != cmbChucVu.Text)
                         {
@@ -396,6 +408,7 @@ namespace QuanLyTienLuong
                             cmd.ExecuteNonQuery();
                             if (con.State == ConnectionState.Open)
                                 cnt++;
+                            con.Close();
                         }
                         if (nhanVien.NgayApDungHSL != mtbNgayApDungHSL.Text)
                         {
@@ -409,6 +422,7 @@ namespace QuanLyTienLuong
                                 cmd.ExecuteNonQuery();
                                 if (con.State == ConnectionState.Open)
                                     cnt++;
+                                con.Close();
                             }
                             else
                             {
@@ -427,6 +441,7 @@ namespace QuanLyTienLuong
                                 cmd.ExecuteNonQuery();
                                 if (con.State == ConnectionState.Open)
                                     cnt++;
+                                con.Close();
                             }
                             else
                             {
@@ -445,6 +460,7 @@ namespace QuanLyTienLuong
                                 cmd.ExecuteNonQuery();
                                 if (con.State == ConnectionState.Open)
                                     cnt++;
+                                con.Close();
                             }
                             else
                             {
